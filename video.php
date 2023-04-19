@@ -41,4 +41,33 @@
                 <img src='".$row["zdjecie"]."' alt='film'>
                 <p>".$row["opis"]."</p>
             </div>            
-          
+           ";
+        }
+        ?>
+    </div>
+    <div class="lista">
+        <h3>Filmy fantastyczne</h3>
+        <?php
+        $sql="SELECT `id`, `nazwa`, `ilosc`, `opis`, `zdjecie` FROM `produkty` WHERE `Rodzaje_id` = 12;";
+        $res = $con->query($sql);
+        while($row = $res->fetch_assoc()){
+            echo "
+            <div class='film'>
+                <h4>".$row["id"].". ".$row["nazwa"]."</h4>
+                <img src='".$row["zdjecie"]."' alt='film'>
+                <p>".$row["opis"]."</p>
+            </div>            
+            ";
+        }
+        ?>
+    </div>
+    <div class="stopka">
+        <form method="POST">
+            <label>Usuń film nr.:</label><input type="number" name="nr">
+            <input type="submit" value="Usuń film">
+        </form>
+        <span>Stronę wykonał: Fabian Adamiak</span>
+    </div>
+    <?php $con->close(); ?>
+</body>
+</html>
